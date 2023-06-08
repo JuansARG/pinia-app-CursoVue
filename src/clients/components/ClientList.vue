@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-import useClients from '../composables/useClients';
+import type { Client } from '@/clients/interfaces/client';
 
-const { clients } = useClients();
+
+const props = defineProps<{
+    clients: Client[]
+}>();
 
 </script>
 <template>
     <ul>
         <li 
-            v-for="{ id, name } of clients"
+            v-for="{ id, name } of props.clients"
             :key="id"
             >
             <RouterLink
